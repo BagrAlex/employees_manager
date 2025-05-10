@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Field - Employee Directory{% endblock %}
+
+{% block content %}
+<h1>Edit Field</h1>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <label for="name">Field Name:</label>
+    {{ form.name }}
+
+    <label for="field_type">Field Type:</label>
+    {{ form.field_type }}
+
+    {{ form.submit }}
+</form>
+{% endblock %}

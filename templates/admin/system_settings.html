@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}System Settings - Employee Directory{% endblock %}
+
+{% block content %}
+<h1>System Settings</h1>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div>
+        <label for="registration_enabled">Enable User Registration:</label>
+        {{ form.registration_enabled }}
+    </div>
+    <button type="submit">Save Settings</button>
+</form>
+{% endblock %}

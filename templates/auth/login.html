@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Страница входа - Картотека{% endblock %}
+
+{% block content %}
+<div class="login-form">
+    <h2>Введите учётные данные</h2>
+    <form method="POST" action="{{ url_for('auth.login') }}">
+        {{ form.hidden_tag() }} <!-- CSRF-токен -->
+        <label for="username">Имя пользователя:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Пароль:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">ВХОД</button>
+    </form>
+    <p>Нет учётной записи? <a href="{{ url_for('auth.register') }}">Регистрация</a>.</p>
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Set Field Value - Employee Directory{% endblock %}
+
+{% block content %}
+<h1>Set Field Value</h1>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <label for="value">Value:</label>
+    {{ form.value }}
+
+    {{ form.submit }}
+</form>
+{% endblock %}

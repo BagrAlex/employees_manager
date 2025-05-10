@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Панель администратора - Картотека{% endblock %}
+
+{% block content %}
+<h1>Панель администратора</h1>
+<a href="{{ url_for('admin.add_employee') }}" class="btn">Добавить сотрудника</a>
+<a href="{{ url_for('admin.settings') }}" class="btn">Настройки</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>ФИО</th>
+            <th>Должность</th>
+            <th>Место работы</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for employee in employees %}
+        <tr>
+            <td>{{ employee.full_name }}</td>
+            <td>{{ employee.position }}</td>
+            <td>{{ employee.workplace }}</td>
+            <td>
+                <a href="{{ url_for('admin.edit_employee', employee_id=employee.id) }}">Edit</a>
+                <a href="{{ url_for('admin.delete_employee', employee_id=employee.id) }}" onclick="return confirm('Are you sure?')">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

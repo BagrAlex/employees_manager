@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Manage Fields - Employee Directory{% endblock %}
+
+{% block content %}
+<h1>Manage Fields</h1>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <label for="name">Field Name:</label>
+    {{ form.name }}
+
+    <label for="field_type">Field Type:</label>
+    {{ form.field_type }}
+
+    {{ form.submit }}
+</form>
+
+<h2>Existing Fields</h2>
+<ul>
+    {% for field in fields %}
+    <li>
+        {{ field.name }} ({{ field.field_type }})
+        <a href="{{ url_for('admin.edit_field', field_id=field.id) }}">Edit</a>
+        <a href="{{ url_for('admin.delete_field', field_id=field.id) }}" onclick="return confirm('Are you sure?')">Delete</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

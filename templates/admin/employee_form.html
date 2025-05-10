@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}{{ action }} Employee - Employee Directory{% endblock %}
+
+{% block content %}
+<h1>{{ action }} Employee</h1>
+<form method="POST" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    <label for="full_name">Full Name:</label>
+    {{ form.full_name }}
+
+    <label for="birth_date">Birth Date:</label>
+    {{ form.birth_date }}
+
+    <label for="personal_number">Personal Number:</label>
+    {{ form.personal_number }}
+
+    <label for="position">Position:</label>
+    {{ form.position }}
+
+    <label for="workplace">Workplace:</label>
+    {{ form.workplace }}
+
+    <label for="contract_start_date">Contract Start Date:</label>
+    {{ form.contract_start_date }}
+
+    <label for="contacts">Contacts:</label>
+    {{ form.contacts }}
+
+    <label for="photo">Photo:</label>
+    {{ form.photo }}
+
+    {{ form.submit }}
+</form>
+{% endblock %}

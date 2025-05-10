@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Settings - Employee Directory{% endblock %}
+
+{% block content %}
+<h1>Задание соответствия должность/выслуга</h1>
+
+<!-- Форма для добавления нового соответствия -->
+<form method="POST" class="settings-form">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        <label for="position">Должность:</label>
+        {{ form.position }}
+    </div>
+    <div class="form-group">
+        <label for="duration_months">До выслуги (месяцев):</label>
+        {{ form.duration_months }}
+    </div>
+    <button type="submit" class="btn">Добавить должность</button>
+</form>
+
+<!-- Таблица с уже добавленными соответствиями -->
+<h2>Текущие пары должность/выслуга</h2>
+<table class="settings-table">
+    <thead>
+        <tr>
+            <th>Должность</th>
+            <th>Надо до выслуги (месяцев)</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for position in positions %}
+        <tr>
+            <td>{{ position.position }}</td>
+            <td>{{ position.duration_months }}</td>
+            <td>
+                <a href="{{ url_for('admin.edit_position', position_id=position.id) }}" class="btn edit-btn">Изменить</a>
+                <a href="{{ url_for('admin.delete_position', position_id=position.id) }}" class="btn delete-btn" onclick="return confirm('Are you sure?')">Удалить</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
